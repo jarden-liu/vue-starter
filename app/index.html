@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>vue-starter</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
 
-    <!-- abc -->
-    <script src="http://10.20.3.59:35729/livereload.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta http-equiv="Cache-control" content="no-cache" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="format-detection" content="telphone=no" />
+  <title>vue-starter</title>
+</head>
+
+<body>
+  <div id="app">
+    <transition name="slide-fade" mode="out-in">
+      <router-view class="view"></router-view>
+    </transition>
+    <!-- <router-view></router-view> -->
+  </div>
+  <div id="pc">
+  </div>
+
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

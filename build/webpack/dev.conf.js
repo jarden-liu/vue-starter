@@ -9,7 +9,11 @@ module.exports = merge(baseWebpackConfig, {
   devtool: '#eval-source-map',
   debug: true,
   plugins: [
-
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"development"'
+      }
+    }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -20,7 +24,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: conf.PATHS.base + '/index.html',
+      template: '.tmp/index_livereload.html',
       inject: true
     })
   ]

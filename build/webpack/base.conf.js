@@ -1,9 +1,11 @@
 var path = require('path');
 var conf = require('../config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var platform = process.env.PLATFORM_ENV || 'mobile';
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../..', conf.PATHS.base)
+    app: path.resolve(__dirname, '../..', conf.PATHS.base,  platform)
   },
   output: {
     path: path.resolve(__dirname, '../..', conf.PATHS.output),
@@ -23,6 +25,7 @@ module.exports = {
     }
   },
   resolveLoader: {
+    root: path.join(__dirname, '../..', conf.PATHS.nodeModules),
     fallback: [
       path.join(__dirname, '../..', conf.PATHS.nodeModules),
       path.join(__dirname, '../..', conf.PATHS.bowerComponents)
@@ -48,17 +51,26 @@ module.exports = {
       loader: 'babel',
       include: new RegExp(conf.PATHS.base),
       exclude: /node_modules/
-    },  {
+    }, {
+      test: /\.html$/,
+      loader: 'vue-html'
+    }, {
       test: /\.json$/,
       loader: 'json'
     }, {
-      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-      loader: 'url'
+      test: /\.css$/,
+      loader: 'style!css'
     }, {
-      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-      loader: 'url'
+
+      test: /\.(png|jpg|gif|svg)|((eot|woff|ttf|svg)[\?]?.*)$/,
+      loader: 'url',
+      query: {
+        limit: 10000,
+        name: '[name].[ext]?[hash]'
+      }
     }]
   },
+  devtool: '#eval-source-map',
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },
