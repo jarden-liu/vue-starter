@@ -13,7 +13,7 @@ module.exports = {
   // add your custom rules here
   'rules': {
     "semi": [2, "always"],
-    // "quotes": [2, "single"],
+    "quotes": [2, "single"],
     // 'arrow-parens': 1,
     // // allow async-await
     'generator-star-spacing': 2,
@@ -22,8 +22,9 @@ module.exports = {
 
     'arrow-parens': 0,
     // allow async-await
-    // 'generator-star-spacing': 0,
+    'generator-star-spacing': 0,
+    "space-before-function-paren": ["error", "never"]
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }

@@ -1,30 +1,33 @@
 <template>
 <div>
-  <mt-header fixed title="主页2">
-  </mt-header>
-  <div class="has_title app_content">
-    <img src="../../assets/logo.png">
-    <div>
-      <router-link to="/page1">
-        <mt-button>Go page1</mt-button>
-      </router-link>
-    </div>
-  </div>
+  <div class="header_bar"></div>
+  <transition :name="transitionName" mode="out-in">
+    <router-view class="child-view"></router-view>
+  </transition>
 </div>
 </template>
 
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      transitionName: 'slide-left'
     };
   },
-  methods: {
-    startHacking () {
-      this.$toast('It Works!');
+  watch: {
+    '$route'(to, from) {
+      // const toDepth = to.path.split('/').length;
+      // const fromDepth = from.path.split('/').length;
+      console.log(to);
+      this.transitionName = from.meta.backRouter === to.name ? 'slide-right' : 'slide-left';
+      console.log(this.transitionName);
     }
+  },
+  methods: {
+    // startHacking() {
+    //   this.$toast('It Works!');
+    // }
   }
 };
 </script>
@@ -53,14 +56,40 @@ html {
 }
 
 .slide-fade-enter-active {
-  transition: all .9s ease;
+    transition: all 0.9s ease;
 }
 .slide-fade-leave-active {
-  transition: all .9s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all 0.9s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
-.slide-fade-enter, .slide-fade-leave-active {
-  transform: translateX(300px);
-  opacity: 1;
+.slide-fade-enter,
+.slide-fade-leave-active {
+    transform: translateX(300px);
+    opacity: 1;
 
+}
+
+.header_bar{
+  width: 100%;
+  background-color: #26a2ff;
+  height: 40px;
+  position: fixed;
+  top: 0;
+}
+
+.child-view {
+    transition: all 0.3s cubic-bezier(0,1,.4,1);
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+    opacity: .25;
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+    opacity: 0.25;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
 }
 </style>

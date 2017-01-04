@@ -8,6 +8,7 @@ var conf = require('../config');
 var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
+var open = require("open");
 var platform = process.env.PLATFORM_ENV || 'mobile';
 
 gulp.task('server', function(callback) {
@@ -17,6 +18,9 @@ gulp.task('server', function(callback) {
 
 
 gulp.task('generateLiveReloadTemplate', function() {
+  gulp.watch(conf.PATHS.base + '/index.html',function () {
+    runSequence('generateLiveReloadTemplate');
+  });
   gulp.src(conf.PATHS.base + '/index.html')
     .pipe(replace(/<\/body>/, '<script>\n document.write(\'<script src="http://\'+location.hostname+\':' + conf.Server.LIVERELOAD_PORT + '/livereload.js"><\\/script>\');\n</script>\n</body>'))
     .pipe(rename('index_livereload.html'))
@@ -35,7 +39,9 @@ gulp.task('webpackServer', function(callback) {
     }
   }).listen(conf.Server.PORT, '0.0.0.0', function(err) {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
-    gutil.log('[webpack-dev-server]', 'http://' + ip.address() + ':' + conf.Server.PORT + '/');
+    var Url = 'http://' + ip.address() + ':' + conf.Server.PORT + '/';
+    open(Url);
+    gutil.log('[webpack-dev-server]', Url);
   });
 
 });

@@ -21,5 +21,7 @@ Vue.http.options.credentials = true;
 
 /* eslint-disable no-new */
 new Vue({
+  mode: 'history',
+  base: __dirname,
   router: appRouter
 }).$mount('#app');
