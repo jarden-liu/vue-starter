@@ -3,9 +3,10 @@ var conf = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var platform = process.env.PLATFORM_ENV || 'mobile';
 
+console.log(path.resolve(__dirname, '../..', conf.PATHS.base, 'assets'));
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../..', conf.PATHS.base,  platform)
+    app: path.resolve(__dirname, '../..', conf.PATHS.base, platform)
   },
   output: {
     path: path.resolve(__dirname, '../..', conf.PATHS.output),
@@ -21,7 +22,8 @@ module.exports = {
     ],
     alias: {
       'vue$': 'vue/dist/vue.common.js',
-      'app': path.resolve(__dirname, '../..', conf.PATHS.base)
+      'app': path.resolve(__dirname, '../..', conf.PATHS.base),
+      'assets': path.resolve(__dirname, '../..', conf.PATHS.base, 'assets')
     }
   },
   resolveLoader: {
