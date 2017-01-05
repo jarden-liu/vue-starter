@@ -5,12 +5,10 @@ import '../config';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import appRouter from './modules/AppRouter';
-import MintScroll from 'vue-mint-scroll';
 
 Vue.use(MintUI);
 Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.use(MintScroll);
 
 
 
