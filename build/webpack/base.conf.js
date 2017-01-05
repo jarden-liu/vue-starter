@@ -3,10 +3,9 @@ var conf = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var platform = process.env.PLATFORM_ENV || 'mobile';
 
-console.log(path.resolve(__dirname, '../..', conf.PATHS.base, 'assets'));
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../..', conf.PATHS.base, platform)
+    app: path.resolve(__dirname, '../..', conf.PATHS.base, platform.trim())
   },
   output: {
     path: path.resolve(__dirname, '../..', conf.PATHS.output),
