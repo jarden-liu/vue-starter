@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-nav-title="'主页'">
   <!-- <mt-header fixed title="主页">
   </mt-header> -->
   <div class="has_title app_content">

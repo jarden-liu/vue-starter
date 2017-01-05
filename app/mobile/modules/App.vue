@@ -1,10 +1,13 @@
 <template>
 <div>
-  <mt-header fixed title="page1">
+  <!-- <mt-header fixed :title="title">
     <router-link to="/home" slot="left">
       <mt-button icon="back">返回</mt-button>
     </router-link>
-  </mt-header>
+  </mt-header> -->
+
+  <navBar></navBar>
+
   <transition :name="transitionName" mode="out-in">
     <router-view class="child-view"></router-view>
   </transition>
@@ -12,12 +15,21 @@
 </template>
 
 <script>
+import navBar from '../components/navBar';
 export default {
   name: 'app',
   data() {
     return {
       transitionName: 'slide-left'
     };
+  },
+  computed: {
+    title() {
+      return this.$store.state.title;
+    }
+  },
+  components: {
+    navBar
   },
   watch: {
     $route: function(to, from) {
@@ -58,7 +70,8 @@ html {
     text-align: center;
     color: #2c3e50;
     height: 100%;
-    // overflow: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .mobile_app_view {
     height: 100%;

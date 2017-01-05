@@ -5,20 +5,34 @@ import '../config';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import appRouter from './modules/AppRouter';
+import store from '../vuex';
+import EventBus from '../core/EventBus';
+
 
 Vue.use(MintUI);
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(EventBus);
 
 
+Vue.directive('navTitle', {
+  bind: function(el, binding) {
+    var newTitle = binding.argument || binding.expression.replace(/'/g, '');
+    console.log(store);
+    store.commit('navBar/updateNavBarTitle', newTitle);
+  }
+});
 
 
 /* eslint-disable no-new */
 new Vue({
   mode: 'history',
+  store,
   base: __dirname,
   router: appRouter
 }).$mount('#app');
+
+
 
 
 
