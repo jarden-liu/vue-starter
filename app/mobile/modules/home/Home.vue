@@ -1,9 +1,9 @@
 <template>
 <div>
-  <mt-header fixed title="主页">
-  </mt-header>
+  <!-- <mt-header fixed title="主页">
+  </mt-header> -->
   <div class="has_title app_content">
-    <img src="../../../assets/logo.png">
+    <img src="../../../assets/logo.png" >
     <div>
       <router-link to="/page1">
         <mt-button>Go page1</mt-button>

@@ -1,6 +1,10 @@
 <template>
 <div>
-  <div class="header_bar"></div>
+  <mt-header fixed title="page1">
+    <router-link to="/home" slot="left">
+      <mt-button icon="back">返回</mt-button>
+    </router-link>
+  </mt-header>
   <transition :name="transitionName" mode="out-in">
     <router-view class="child-view"></router-view>
   </transition>
@@ -16,7 +20,7 @@ export default {
     };
   },
   watch: {
-    '$route'(to, from) {
+    $route: function(to, from) {
       // const toDepth = to.path.split('/').length;
       // const fromDepth = from.path.split('/').length;
       console.log(to);
@@ -43,46 +47,45 @@ html {
     width: 100%;
 }
 
+.mobile_app {
+    height: 100%;
+}
+
 .app_content {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    height: 100%;
+    // overflow: auto;
+}
+.mobile_app_view {
+    height: 100%;
 }
 
 .has_title {
-    padding-top: 40px;
+    top: 40px;
+    position: relative;
+    height: calc(100% - 40px);
 }
 
-.slide-fade-enter-active {
-    transition: all 0.9s ease;
-}
-.slide-fade-leave-active {
-    transition: all 0.9s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter,
-.slide-fade-leave-active {
-    transform: translateX(300px);
-    opacity: 1;
-
-}
-
-.header_bar{
-  width: 100%;
-  background-color: #26a2ff;
-  height: 40px;
-  position: fixed;
-  top: 0;
+.header_bar {
+    width: 100%;
+    background-color: #26a2ff;
+    height: 40px;
+    position: fixed;
+    top: 0;
 }
 
 .child-view {
     transition: all 0.3s cubic-bezier(0,1,.4,1);
+    height: 100%;
 }
 
 .slide-left-enter,
 .slide-right-leave-active {
-    opacity: .25;
+    opacity: 0.25;
     -webkit-transform: translate(100%, 0);
     transform: translate(100%, 0);
 }

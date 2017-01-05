@@ -23,6 +23,8 @@ module.exports = {
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
+    'no-multiple-empty-lines': 0,
+    'padded-blocks': 0,
     "space-before-function-paren": ["error", "never"]
     // allow debugger during development
     // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0

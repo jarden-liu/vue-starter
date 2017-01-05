@@ -21,7 +21,7 @@ gulp.task('generateLiveReloadTemplate', function() {
   gulp.watch(conf.PATHS.base + '/index.html',function () {
     runSequence('generateLiveReloadTemplate');
   });
-  gulp.src(conf.PATHS.base + '/index.html')
+  return gulp.src(conf.PATHS.base + '/index.html')
     .pipe(replace(/<\/body>/, '<script>\n document.write(\'<script src="http://\'+location.hostname+\':' + conf.Server.LIVERELOAD_PORT + '/livereload.js"><\\/script>\');\n</script>\n</body>'))
     .pipe(rename('index_livereload.html'))
     .pipe(gulp.dest('.tmp'));
@@ -40,8 +40,10 @@ gulp.task('webpackServer', function(callback) {
   }).listen(conf.Server.PORT, '0.0.0.0', function(err) {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
     var Url = 'http://' + ip.address() + ':' + conf.Server.PORT + '/';
+
     open(Url);
     gutil.log('[webpack-dev-server]', Url);
+    callback();
   });
 
 });
