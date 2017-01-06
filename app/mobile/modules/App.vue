@@ -35,7 +35,6 @@ export default {
     $route: function(to, from) {
       // const toDepth = to.path.split('/').length;
       // const fromDepth = from.path.split('/').length;
-      console.log(to);
       this.transitionName = from.meta.backRouter === to.name ? 'slide-right' : 'slide-left';
       console.log(this.transitionName);
     }

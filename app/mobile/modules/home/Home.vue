@@ -1,5 +1,5 @@
 <template>
-<div v-nav-title="'主页'">
+<div v-nav-title="'主页'" v-hide-back-button>
   <!-- <mt-header fixed title="主页">
   </mt-header> -->
   <div class="has_title app_content">

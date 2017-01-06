@@ -7,7 +7,11 @@ import mutations from './mutations';
 Vue.use(Vuex);
 
 let mainStore = new Vuex.Store({
-  state: {},
+  state: {
+    provinceList: [{
+      MC: '123'
+    }]
+  },
   mutations: mutations,
   actions: actions,
   getters: getters

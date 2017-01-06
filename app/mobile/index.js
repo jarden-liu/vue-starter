@@ -15,14 +15,6 @@ Vue.use(VueResource);
 Vue.use(EventBus);
 
 
-Vue.directive('navTitle', {
-  bind: function(el, binding) {
-    var newTitle = binding.argument || binding.expression.replace(/'/g, '');
-    console.log(store);
-    store.commit('navBar/updateNavBarTitle', newTitle);
-  }
-});
-
 
 /* eslint-disable no-new */
 new Vue({

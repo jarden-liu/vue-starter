@@ -1,7 +1,9 @@
+function updateProvinceList(state, list) {
+  state.provinceList = list;
+}
+
 var mutations = {
-  updateNavBarTitle: function() {
-    console.log(213);
-  }
+  updateProvinceList: updateProvinceList
 };
 
 
