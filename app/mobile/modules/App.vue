@@ -9,7 +9,9 @@
   <navBar></navBar>
 
   <transition :name="transitionName" mode="out-in">
+    <keep-alive>
     <router-view class="child-view"></router-view>
+    <keep-alive>
   </transition>
 </div>
 </template>
