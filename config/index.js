@@ -6,5 +6,6 @@ module.exports = {
   PATHS: PATHS,
   PORTS: PORTS,
   FILE_FORMAT: FILE_FORMAT,
-  MODULE_ALIAS: MODULE_ALIAS
+  MODULE_ALIAS: MODULE_ALIAS,
+  TITLE: 'vue-starter-demo'
 };

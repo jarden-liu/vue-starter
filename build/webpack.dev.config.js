@@ -7,8 +7,9 @@ const config = require('../config');
 
 
 Object.keys(baseWebpackConfig.entry).forEach(function(name) {
-  baseWebpackConfig.entry[name] = [getJoinPath('build/hotClient')].concat(baseWebpackConfig.entry[name])
-})
+  baseWebpackConfig.entry[name] = [getJoinPath('build/hotClient')].concat(baseWebpackConfig.entry[name]);
+});
+console.log(config.TITLE);
 
 module.exports = merge(baseWebpackConfig, {
   devtool: '#eval-source-map',
@@ -23,8 +24,9 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: getJoinPath(config.PATHS.base + '/index.html'),
-      inject: true
+      template: getJoinPath(config.PATHS.base + '/index.ejs'),
+      inject: true,
+      title: config.TITLE
     })
   ]
 });

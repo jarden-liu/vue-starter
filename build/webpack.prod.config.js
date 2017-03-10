@@ -20,8 +20,9 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: getJoinPath(config.PATHS.base + '/index.html'),
-      inject: true
+      template: getJoinPath(config.PATHS.base + '/index.ejs'),
+      inject: true,
+      title: config.TITLE
     }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
