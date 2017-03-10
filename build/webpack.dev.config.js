@@ -9,7 +9,6 @@ const config = require('../config');
 Object.keys(baseWebpackConfig.entry).forEach(function(name) {
   baseWebpackConfig.entry[name] = [getJoinPath('build/hotClient')].concat(baseWebpackConfig.entry[name]);
 });
-console.log(config.TITLE);
 
 module.exports = merge(baseWebpackConfig, {
   devtool: '#eval-source-map',

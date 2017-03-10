@@ -2,6 +2,9 @@ const express = require('express');
 const webpack = require('webpack');
 const config = require('../config');
 const webpackConfig = require('./webpack.dev.config');
+const ip = require('ip');
+const open = require('open');
+
 
 const app = express();
 
@@ -25,7 +28,28 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 
-app.listen(config.PORTS.DEFAULT_PORT, (err) => {
-  if (err) return console.log(err)
-  console.log('http://localhost/' + config.PORTS.DEFAULT_PORT)
-});
+function listenNewPort(app, port) {
+  app.listen(port, (err) => {
+    if (err) {
+      return console.log(err);
+    } else {
+      var Url = 'http://' + ip.address() + ':' + port + '/';
+      open(Url);
+      console.log(Url);
+    }
+  }).on('error', function(e) {
+    if (e.toString().match(/listen EADDRINUSE/)) {
+      console.log(port + '端口已被占用，自动监听', port + 1);
+      setTimeout(function() {
+        listenNewPort(app, port + 1);
+      }, 10);
+    } else {
+      console.log(e);
+      process.exit();
+    }
+
+  });
+}
+
+
+listenNewPort(app, config.PORTS.DEFAULT_PORT);
