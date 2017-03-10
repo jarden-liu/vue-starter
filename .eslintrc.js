@@ -5,7 +5,7 @@ module.exports = {
     sourceType: 'module'
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  // extends: 'standard',
   // required to lint *.vue files
   plugins: [
     'html'
@@ -24,7 +24,7 @@ module.exports = {
     'generator-star-spacing': 1,
     'no-multiple-empty-lines': 0,
     'padded-blocks': 0,
-    "space-before-function-paren": ["error", "never"]
+    // "space-before-function-paren": ["error", "never"]
     // allow debugger during development
     // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
