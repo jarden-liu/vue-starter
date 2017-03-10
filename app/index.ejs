@@ -3,11 +3,90 @@
 
 <head>
   <meta charset="utf-8" />
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <style type="text/css">
+    * {
+      margin: 0;
+    }
+
+    .page-preloading {
+      position: absolute;
+      width: 100%;
+      height: 99%;
+      background: white;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .page-preloading-loading {
+      width: 80px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 20%;
+    }
+
+    .page-preloading-loading span {
+      display: inline-block;
+      width: 8px;
+      height: 100%;
+      border-radius: 4px;
+      background: lightgreen;
+      -webkit-animation: page-preloading-load 1s ease infinite;
+    }
+
+    @-webkit-keyframes page-preloading-load {
+      0%,
+      100% {
+        height: 40px;
+        background: lightgreen;
+      }
+      50% {
+        height: 70px;
+        margin: -15px 0;
+        background: lightblue;
+      }
+    }
+
+    .page-preloading-loading span:nth-child(2) {
+      -webkit-animation-delay: 0.2s;
+    }
+
+    .page-preloading-loading span:nth-child(3) {
+      -webkit-animation-delay: 0.4s;
+    }
+
+    .page-preloading-loading span:nth-child(4) {
+      -webkit-animation-delay: 0.6s;
+    }
+
+    .page-preloading-loading span:nth-child(5) {
+      -webkit-animation-delay: 0.8s;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page-preloading">
+    <div class="page-preloading-loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+    </div>
+  </div>
+
   <div id="app"></div>
+
+  <script type="text/javascript">
+    var PAGE_START_TIME = new Date().getTime() //记录页面初始化时间
+  </script>
 </body>
 
 </html>
