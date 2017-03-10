@@ -1,6 +1,6 @@
 {
   "name": "vue-starter",
-  "version": "2.0.0~beta",
+  "version": "2.0.0",
   "description": "A modern starter which uses Vue 2, Vuex, Vue-router and Webpack",
   "scripts": {
     "build": "node build/build.js",
